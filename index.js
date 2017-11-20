@@ -10,9 +10,9 @@ require('dotenv').config()
 
 Metalsmith(__dirname)
   .use(prismic({
-    "url": process.env.PRISMIC_API_URL,
-    "accessToken": process.env.PRISMIC_API_ACCESS_TOKEN,
-    "release": process.env.PRISMIC_API_RELEASE
+    url: process.env.PRISMIC_API_URL,
+    accessToken: process.env.PRISMIC_API_ACCESS_TOKEN,
+    release: process.env.PRISMIC_API_RELEASE
   }))
   .source('./src')
   .destination('./build')
@@ -21,9 +21,8 @@ Metalsmith(__dirname)
   .use(debug())
   .use(permalinks())
   .use(templates({
-    "engine": "handlebars"
+    engine: "handlebars"
   }))
   .build(function(err, files) {
-    console.log(files['index.html'].prismic.homepage.results[0].data.title.json.blocks)
     if (err) { throw err; }
   });

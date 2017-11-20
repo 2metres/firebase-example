@@ -6,13 +6,14 @@
   <meta name="description">
 </head>
 <body>
-  <header>
-    <p>
-      <a href="/">Home</a>
-    </p>
-  </header>
   {{#each prismic.homepage.results }}
-    {{{ data.title }}}
+    <header>
+      {{{ data.title.html }}}
+      {{{ data.description.html }}}
+    </header>
+    <main>
+      {{{ data.contents.html }}}
+    </main>
   {{/each}}
 </body>
 </html>
