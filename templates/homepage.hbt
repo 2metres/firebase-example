@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Homepage</title>
+  <meta name="description">
+</head>
+<body>
+  <header>
+    <p>
+      <a href="/">Home</a>
+    </p>
+  </header>
+  {{#each prismic.homepage.results }}
+    {{{ data.title }}}
+  {{/each}}
+</body>
+</html>

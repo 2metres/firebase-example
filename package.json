@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "devDependencies": {
+    "dotenv": "^4.0.0",
     "firebase-tools": "^3.15.2",
     "handlebars": "^4.0.11",
     "metalsmith": "^2.3.0",
-    "metalsmith-layouts": "^1.4.1",
+    "metalsmith-debug": "^1.2.0",
+    "metalsmith-logger": "0.0.3",
     "metalsmith-markdown": "^0.2.1",
-    "metalsmith-permalinks": "^0.5.0"
+    "metalsmith-permalinks": "^0.5.0",
+    "metalsmith-prismic": "^0.10.0",
+    "metalsmith-templates": "^0.7.0",
+    "prismic-dom": "^2.0.6"
   },
   "scripts": {
     "build": "node index.js",

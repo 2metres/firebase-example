@@ -1,23 +1,29 @@
 var Metalsmith  = require('metalsmith');
+var debug       = require('metalsmith-debug');
 var markdown    = require('metalsmith-markdown');
-var layouts     = require('metalsmith-layouts');
+var templates   = require('metalsmith-templates');
+var logger      = require('metalsmith-logger');
 var permalinks  = require('metalsmith-permalinks');
+var prismic     = require('metalsmith-prismic');
+
+require('dotenv').config()
 
 Metalsmith(__dirname)
-  .metadata({
-    title: "My Static Site & Blog",
-    description: "It's about saying »Hello« to the World.",
-    generator: "Metalsmith",
-    url: "http://www.metalsmith.io/"
-  })
+  .use(prismic({
+    "url": process.env.PRISMIC_API_URL,
+    "accessToken": process.env.PRISMIC_API_ACCESS_TOKEN,
+    "release": process.env.PRISMIC_API_RELEASE
+  }))
   .source('./src')
   .destination('./build')
-  .clean(false)
+  .clean(true)
   .use(markdown())
+  .use(debug())
   .use(permalinks())
-  .use(layouts({
-    engine: 'handlebars'
+  .use(templates({
+    "engine": "handlebars"
   }))
   .build(function(err, files) {
+    console.log(files['index.html'].prismic.homepage.results[0].data.title.json.blocks)
     if (err) { throw err; }
   });
