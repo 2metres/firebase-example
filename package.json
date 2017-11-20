@@ -1,0 +1,23 @@
+{
+  "name": "firebase-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "firebase-tools": "^3.15.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "firebase deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2metres/firebase-example.git"
+  },
+  "author": "Andrew Carr <andrew@2metres.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/2metres/firebase-example/issues"
+  },
+  "homepage": "https://github.com/2metres/firebase-example#readme"
+}
