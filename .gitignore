@@ -40,5 +40,8 @@ typings/
 
 .env
 
-/build
-/public
+build/
+builds/
+public/
+
+.DS_STORE

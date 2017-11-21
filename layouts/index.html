@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head></head>
+  <body>
+    <main class="main">
+
+    {{#with prismic.content.results.0.data}}
+      <section>
+        {{{ title.html }}}
+        {{{ description.html }}}
+      </section>
+    {{/with}}
+    </main>
+  </body>
+</html>

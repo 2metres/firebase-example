@@ -8,18 +8,20 @@
     "firebase-tools": "^3.15.2",
     "handlebars": "^4.0.11",
     "metalsmith": "^2.3.0",
-    "metalsmith-debug": "^1.2.0",
-    "metalsmith-logger": "0.0.3",
+    "metalsmith-autoprefixer": "^1.1.2",
+    "metalsmith-beautify": "^0.2.0",
+    "metalsmith-ignore": "^0.1.2",
+    "metalsmith-layouts": "^1.8.1",
     "metalsmith-markdown": "^0.2.1",
-    "metalsmith-permalinks": "^0.5.0",
-    "metalsmith-prismic": "^0.10.0",
-    "metalsmith-templates": "^0.7.0",
-    "prismic-dom": "^2.0.6"
+    "metalsmith-prismic-server": "^0.1.14",
+    "metalsmith-sass": "^1.4.0",
+    "normalize.css": "^3.0.3"
   },
   "scripts": {
-    "build": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "firebase deploy"
+    "test": "node server.js build",
+    "dev": "node server.js dev",
+    "build": "node server.js build",
+    "start": "node server.js prod"
   },
   "repository": {
     "type": "git",

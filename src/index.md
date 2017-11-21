@@ -1,6 +1,6 @@
 ---
-template: homepage.hbt
+layout: index.html
 prismic:
-  homepage:
+  content:
     query: '[[:d = at(document.type, "homepage")]]'
 ---
