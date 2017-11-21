@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  {{> head
+    title="Post"
+  }}
+  <body>
+    {{> debug }}
+    {{> links }}
+    <main class="main">
+    {{#with prismic.post.results.0.data}}
+      <section>
+        {{{ title.html }}}
+        {{{ contents.html }}}
+      </section>
+    {{/with}}
+    </main>
+  </body>
+</html>
