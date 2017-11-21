@@ -1,11 +1,4 @@
-#!/usr/bin/env node
-'use strict';
-
-// Setup env variables from local .env file. After this call, all variables
-// from .env file can be access via `process.env`.
-var dotEnvLoaded = require('dotenv').config({
-    silent: true,
-});
+var dotEnvLoaded = require('dotenv').config({ silent: true, });
 console.log('.env file loaded:', dotEnvLoaded);
 
 var autoprefixer = require('metalsmith-autoprefixer');
@@ -26,8 +19,14 @@ var config = {
       return;
     }
     var filename = doc.data ? 'index.html' : '';
-  },
 
+    switch (doc.type) {
+      case 'homepage':
+        return '/' + filename;
+      default:
+        return '/' + doc.type + 's/' +  (doc.uid || doc.slug) + '/' + filename;
+    }
+  },
   plugins: {
     common: [
       markdown(),
