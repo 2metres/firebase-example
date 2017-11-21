@@ -38,7 +38,7 @@ var config = {
         pattern: '**/*.html'
       }),
       sass({
-        outputDir: 'style/'
+        outputDir: 'assets'
       }),
       autoprefixer({
         browsers: ['last 2 versions', '> 5%']

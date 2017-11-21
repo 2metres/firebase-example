@@ -5,12 +5,20 @@
   }}
   <body>
     {{> debug }}
+    {{> links }}
     <main class="main">
-    {{#each prismic.posts.results}}
-      <section>
-        <a href="{{ slug }}">{{{ data.title.html }}}</a>
-      </section>
-    {{/each}}
+      <div class="container">
+        <div class="row">
+          {{#each prismic.posts.results}}
+          <div class="col-md-6">
+            <section class="card">
+              <a href="{{ slug }}">{{{ data.title.html }}}</a>
+              {{{ data.contents.html }}}
+            </section>
+          </div>
+          {{/each}}
+        </div>
+      </div>
     </main>
   </body>
 </html>

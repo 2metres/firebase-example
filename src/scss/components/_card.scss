@@ -1,0 +1,15 @@
+.card {
+  border: 1px solid $base-border-color;
+  margin-bottom: ($base-spacing * 2);
+  padding: $base-spacing;
+
+  h1 {
+    margin: 0;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+  @media (min-width: $breakpoint-md) {
+    height: 100%;
+  }
+}

@@ -1,19 +1,22 @@
 <!doctype html>
 <html>
   {{> head
-    title=prismic.content.results.0.data.title.json.value
+    title="Homepage"
   }}
   <body>
     {{> debug }}
     {{> links }}
-    <main class="main">
-
-    {{#with prismic.content.results.0.data}}
-      <section>
-        {{{ title.html }}}
-        {{{ description.html }}}
-      </section>
-    {{/with}}
+    <main>
+      <div class="container">
+        <div class="row">
+          {{#with prismic.content.results.0.data}}
+          <section class="col-sm-7">
+            {{{ title.html }}}
+            {{{ description.html }}}
+          </section>
+          {{/with}}
+        </div>
+    </div>
     </main>
   </body>
 </html>
