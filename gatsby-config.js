@@ -1,6 +1,16 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
   },
-  plugins: [`gatsby-plugin-react-helmet`],
+  plugins: [
+    {
+      resolve: `gatsby-source-prismic`,
+      options: {
+        repositoryName: process.env.PRISMIC_REPO_NAME,
+        accessToken: process.env.PRISMIC_TOKEN,
+      },
+    }
+  ],
 }

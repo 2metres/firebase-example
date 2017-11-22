@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "devDependencies": {
+    "dotenv": "^4.0.0",
     "firebase-tools": "^3.15.2",
     "gatsby": "^1.9.117",
     "gatsby-link": "^1.6.28",
-    "gatsby-plugin-react-helmet": "^1.0.8"
+    "gatsby-source-prismic": "^0.1.4",
+    "prismic-dom": "^2.0.6"
   },
   "scripts": {
     "build": "gatsby build",
