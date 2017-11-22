@@ -6,28 +6,34 @@ import PrismicHtml from '../helpers/PrismicHtml';
 
 const IndexPage = ({ data }) => {
   const homepage = {
-    id: data.prismic.results[0].node.id,
-    slugs: data.prismic.results[0].node.slugs,
-    title: data.prismic.results[0].node.data.title[0].text,
-    description: data.prismic.results[0].node.data.description,
-    contents: data.prismic.results[0].node.data.contents,
+    id: data.homepages.results[0].node.id,
+    slugs: data.homepages.results[0].node.slugs,
+    title: data.homepages.results[0].node.data.title[0].text,
+    description: data.homepages.results[0].node.data.description,
+    contents: data.homepages.results[0].node.data.contents,
   }
 
-  console.info(homepage)
+  const posts = data.posts.results.map(post => post.node)
 
   return (
     <div>
       <h1>{ homepage.title }</h1>
       <PrismicHtml>{ homepage.description }</PrismicHtml>
       <PrismicHtml>{ homepage.contents }</PrismicHtml>
-      <Link to="/page-2/">Go to page 2</Link>
+      <ul>
+        { posts.map(post => (
+          <li>
+            <Link to={ `${ post.slugs[0] }` }>{ post.data.title[0].text }</Link>
+          </li>))
+        }
+      </ul>
     </div>
   )
 }
 
 export const pageQuery = graphql`
   query Homepage {
-    prismic: allPrismicDocument(filter: { type: { eq: "homepage" } }) {
+    homepages: allPrismicDocument(filter: { type: { eq: "homepage" } }) {
       results: edges {
         node {
           id
@@ -49,6 +55,25 @@ export const pageQuery = graphql`
         }
       }
     }
+    posts: allPrismicDocument(filter: { type: { eq: "post" } }) {
+      results: edges {
+        node {
+          id
+          slugs
+          data {
+            title {
+              type
+              text
+            }
+            contents {
+              type
+              text
+            }
+          }
+        }
+      }
+    }
   }
-`
+`;
+
 export default IndexPage
