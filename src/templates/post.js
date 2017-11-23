@@ -2,8 +2,6 @@ import React from 'react'
 import { RichText } from 'prismic-reactjs';
 
 const Post = ({ data }) => {
-  console.log(data);
-
   const post = {
     id: data.post.id,
     slugs: data.post.slugs,
