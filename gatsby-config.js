@@ -1,16 +1,16 @@
-require('dotenv').config()
+require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: 'Gatsby Default Starter',
   },
   plugins: [
     {
-      resolve: `gatsby-source-prismic`,
+      resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: process.env.PRISMIC_REPO_NAME,
         accessToken: process.env.PRISMIC_TOKEN,
       },
-    }
+    },
   ],
-}
+};
