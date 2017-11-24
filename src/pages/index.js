@@ -1,5 +1,6 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Link from 'gatsby-link';
 import { RichText } from 'prismic-reactjs';
 
 const IndexPage = ({ data }) => {
@@ -9,9 +10,9 @@ const IndexPage = ({ data }) => {
     title: data.homepages.results[0].node.data.title,
     description: data.homepages.results[0].node.data.description,
     contents: data.homepages.results[0].node.data.contents,
-  }
+  };
 
-  const posts = data.posts.results.map(post => post.node)
+  const posts = data.posts.results.map(post => post.node);
 
   return (
     <div className="container">
@@ -21,13 +22,17 @@ const IndexPage = ({ data }) => {
       <ul>
         { posts.map(post => (
           <li key={ post.slugs[0] }>
-            <Link to={`posts/${ post.slugs[0] }`}>{ post.data.title[0].text }</Link>
+            <Link to={ `posts/${ post.slugs[0] }` }>{post.data.title[0].text}</Link>
           </li>))
         }
       </ul>
     </div>
-  )
-}
+  );
+};
+
+IndexPage.propTypes = {
+  data: PropTypes.shape({}).isRequired,
+};
 
 export const homepageQuery = graphql`
   query Homepage {
@@ -74,4 +79,4 @@ export const homepageQuery = graphql`
   }
 `;
 
-export default IndexPage
+export default IndexPage;

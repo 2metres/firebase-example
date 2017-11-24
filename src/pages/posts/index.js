@@ -1,13 +1,11 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React from 'react';
+import PropTypes from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 
 import Card from '../../components/Card';
 
 const PostIndex = ({ data }) => {
-  const posts = data.posts.results.map(post => post.node)
-
-  console.log(posts);
+  const posts = data.posts.results.map(post => post.node);
 
   return (
     <div className="container">
@@ -23,8 +21,12 @@ const PostIndex = ({ data }) => {
         }
       </div>
     </div>
-  )
-}
+  );
+};
+
+PostIndex.propTypes = {
+  data: PropTypes.shape({}).isRequired,
+};
 
 export const postIndexQuery = graphql`
   query PostIndex {
@@ -49,4 +51,4 @@ export const postIndexQuery = graphql`
   }
 `;
 
-export default PostIndex
+export default PostIndex;

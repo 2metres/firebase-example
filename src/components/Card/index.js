@@ -9,24 +9,29 @@ const Card = ({
   title,
   body,
   url,
-}) => {
-  return url
-    ? <Link
+}) => (
+  url
+    ? (
+      <Link
         to={ url }
         className={
           classNames.bind(styles)({
             root: true,
-            link: url
+            link: url,
           })
-        }>
-        <h1 className={ styles.title }>{ title }</h1>
-        <div className={ styles.body }>{ body }</div>
+        }
+      >
+        <h1 className={ styles.title }>{title}</h1>
+        <div className={ styles.body }>{body}</div>
       </Link>
-    : <div className={ styles.root }>
-        <h1 className={ styles.title }>{ title }</h1>
-        <div className={ styles.body }>{ body }</div>
+    )
+    : (
+      <div className={ styles.root }>
+        <h1 className={ styles.title }>{title}</h1>
+        <div className={ styles.body }>{body}</div>
       </div>
-};
+    )
+);
 
 Card.defaultProps = {
   url: '',
