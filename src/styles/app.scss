@@ -1,9 +1,9 @@
-@import "../styles/variables";
+@import "variables";
 
 // Bootstrap, the good parts
 @import "node_modules/bootstrap/scss/bootstrap-reboot";
 @import "node_modules/bootstrap/scss/bootstrap-grid";
 //
 
-@import "../styles/global";
-@import "../styles/typography";
+@import "globals";
+@import "typography";

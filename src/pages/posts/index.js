@@ -1,18 +1,27 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import { RichText } from 'prismic-reactjs';
+
+import Card from '../../components/Card';
 
 const PostIndex = ({ data }) => {
   const posts = data.posts.results.map(post => post.node)
 
+  console.log(posts);
+
   return (
     <div className="container">
-      <ul>
+      <div className="row">
         { posts.map(post => (
-          <li key={ post.slugs[0] }>
-            <Link to={`/posts/${ post.slugs[0] }/`}>{ post.data.title[0].text }</Link>
-          </li>))
+          <div key={ post.slugs[0] } className="col-md-6">
+            <Card
+              title={ RichText.asText(post.data.title) }
+              body={ RichText.asText(post.data.contents) }
+              url={ `/posts/${ post.slugs[0] }` }
+            />
+          </div>))
         }
-      </ul>
+      </div>
     </div>
   )
 }

@@ -11,12 +11,6 @@ module.exports = {
         repositoryName: process.env.PRISMIC_REPO_NAME,
         accessToken: process.env.PRISMIC_TOKEN,
       },
-    },
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        precision: 8,
-      }
     }
   ],
 }
