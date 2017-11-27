@@ -1,4 +1,3 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
@@ -31,48 +30,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 };
 
 exports.modifyWebpackConfig = ({ config, stage }) => {
-  const cssModulesConf = 'css?modules&minimize&importLoaders=1';
-  const cssModulesConfDev = `${ cssModulesConf }&sourceMap&localIdentName=[folder]__[local]`;
-  const cssModulesConfTest = /module\.scss$/;
-
   switch (stage) {
     case 'develop': {
-      config.loader('sass', {
-        test: /\.scss$/,
-        exclude: cssModulesConfTest,
-        loaders: ['style', 'css', 'sass'],
-      });
-
-      config.loader('sassModules', {
-        test: cssModulesConfTest,
-        loaders: ['style', cssModulesConfDev, 'sass'],
-      });
-      return config;
-    }
-    case 'build-css': {
-      config.loader('sass', {
-        test: /\.scss$/,
-        exclude: cssModulesConfTest,
-        loader: ExtractTextPlugin.extract(['css?minimize', 'sass']),
-      });
-
-      config.loader('sassModules', {
-        test: cssModulesConfTest,
-        loader: ExtractTextPlugin.extract('style', [cssModulesConf, 'sass']),
-      });
-      return config;
-    }
-    case 'build-html':
-    case 'build-javascript': {
-      config.loader('sass', {
-        test: /\.scss$/,
-        exclude: cssModulesConfTest,
-        loader: 'null',
-      });
-
-      config.loader('sassModules', {
-        test: cssModulesConfTest,
-        loader: ExtractTextPlugin.extract('style', [cssModulesConf, 'sass']),
+      config.loader('sassModules', (current) => {
+        current.loaders[1] = current.loaders[1].replace(/localIdentName=.*?(&|$)/, 'localIdentName=[folder]__[local]&');
+        return current;
       });
       return config;
     }

@@ -12,15 +12,13 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.5.1",
-    "extract-text-webpack-plugin": "^3.0.2",
     "firebase-tools": "^3.15.2",
     "gatsby": "^1.9.117",
     "gatsby-link": "^1.6.28",
     "gatsby-source-prismic": "^0.1.4",
-    "node-sass": "^4.5.2",
+    "gatsby-plugin-sass": "^1.0.13",
     "prismic-dom": "^2.0.6",
-    "prismic-reactjs": "^0.2.4",
-    "sass-loader": "^4.1.1"
+    "prismic-reactjs": "^0.2.4"
   },
   "scripts": {
     "build": "gatsby build",

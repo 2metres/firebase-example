@@ -6,6 +6,9 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-sass',
+    },
+    {
       resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: process.env.PRISMIC_REPO_NAME,

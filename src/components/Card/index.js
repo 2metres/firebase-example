@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import classNames from 'classnames/bind';
 
-import styles from './module.scss';
+import styles from './style.module.scss';
 
 const Card = ({
   title,
