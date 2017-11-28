@@ -14,12 +14,10 @@ const Card = ({
     ? (
       <Link
         to={ url }
-        className={
-          classNames.bind(styles)({
-            root: true,
-            link: url,
-          })
-        }
+        className={ classNames.bind(styles)({
+          root: true,
+          link: url,
+        }) }
       >
         <h1 className={ styles.title }>{title}</h1>
         <div className={ styles.body }>{body}</div>
