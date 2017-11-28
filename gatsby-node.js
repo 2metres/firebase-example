@@ -1,4 +1,5 @@
 const path = require('path');
+const GATSBY_LOCAL_IDENT_NAME = require('gatsby-1-config-css-modules').LOCAL_IDENT_NAME;
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
@@ -32,7 +33,7 @@ exports.modifyWebpackConfig = ({ config, stage }) => {
   switch (stage) {
     case 'develop': {
       config.loader('sassModules', (current) => {
-        current.loaders[1] = current.loaders[1].replace(/localIdentName=.*?(&|!|$)/, 'localIdentName=[folder]__[local]&');
+        current.loaders = current.loaders.map(loader => loader.replace(GATSBY_LOCAL_IDENT_NAME, '[folder]__[local]'));
         return current;
       });
       return config;
@@ -42,7 +43,7 @@ exports.modifyWebpackConfig = ({ config, stage }) => {
     case 'build-html':
     case 'build-javascript': {
       config.loader('sassModules', (current) => {
-        current.loader = current.loader.replace(/localIdentName=.*?(&|!|$)/, 'localIdentName=[folder]__[local]---[hash:base64:5]!');
+        current.loader = current.loader.replace(GATSBY_LOCAL_IDENT_NAME, '[folder]__[local]---[hash:base64:5]');
         return current;
       });
       return config;
