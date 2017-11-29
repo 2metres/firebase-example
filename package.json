@@ -1,23 +1,26 @@
 {
-  "name": "firebase-example",
-  "version": "1.0.0",
-  "description": "",
+  "name": "react-static-example-basic",
+  "version": "1.0.1",
   "main": "index.js",
-  "devDependencies": {
-    "firebase-tools": "^3.15.2"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "firebase deploy"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/2metres/firebase-example.git"
-  },
-  "author": "Andrew Carr <andrew@2metres.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/2metres/firebase-example/issues"
+  "scripts": {
+    "start": "react-static start",
+    "build": "react-static build",
+    "serve": "serve dist -p 3000"
   },
-  "homepage": "https://github.com/2metres/firebase-example#readme"
+  "dependencies": {
+    "axios": "^0.16.2",
+    "prismic-javascript": "^1.4.1",
+    "prismic-reactjs": "^0.2.4",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-router": "^4.2.0",
+    "react-static": "^4.3.4"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0",
+    "eslint-config-react-tools": "1.x.x",
+    "firebase-tools": "^3.15.2",
+    "serve": "^6.1.0"
+  }
 }
