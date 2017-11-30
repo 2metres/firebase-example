@@ -1,13 +1,12 @@
-import 'dotenv/config';
-import { RichText } from 'prismic-dom';
-import Prismic from 'prismic-javascript';
+import 'dotenv/config'
+import { RichText } from 'prismic-dom'
+import Prismic from 'prismic-javascript'
 
 export default {
   getSiteProps: () => ({
     title: 'React Static',
   }),
   getRoutes: async () => {
-
     const postsReq = Prismic.api(process.env.PRISMIC_API_URL)
       .then(api => api.query('[ at(document.type, "post") ]'))
       .then(response => response.results)
@@ -22,7 +21,7 @@ export default {
     ] = await Promise.all([
       postsReq,
       homepageReq,
-    ]);
+    ])
 
     return [
       {
@@ -69,7 +68,7 @@ export default {
           {
             test: /\.scss$/,
             exclude: /module\.scss$/,
-            use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+            use: ['style-loader', 'css-loader', 'sass-loader'],
           },
           {
             test: /module\.scss$/,
@@ -82,11 +81,11 @@ export default {
                   localIdentName: '[folder]__[local]___[hash:base64:5]',
                 },
               },
-              'sass-loader'
-            ]
+              'sass-loader',
+            ],
           },
           defaultLoaders.fileLoader,
-        ]
+        ],
       }]
       return config
     },
