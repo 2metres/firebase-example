@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {} from 'dotenv/config';
+import { RichText } from 'prismic-dom';
 import Prismic from 'prismic-javascript';
 
 export default {
@@ -20,7 +21,12 @@ export default {
       {
         path: '/',
         component: 'src/containers/Home',
-        getProps: () => ({ homepage }),
+        getProps: () => ({ homepage: {
+          id: homepage.id,
+          title: RichText.asText(homepage.data.homepage.title.value),
+          description: RichText.asText(homepage.data.homepage.description.value),
+          contents: homepage.data.homepage.contents.value,
+        } }),
       },
       {
         path: '/about',

@@ -4,11 +4,9 @@ import { RichText } from 'prismic-reactjs'
 
 const Home = ({ homepage }) => (
   <div>
-    <h1>{ RichText.asText(homepage.data.homepage.title.value) }</h1>
-    <h4>{ RichText.asText(homepage.data.homepage.description.value) }</h4>
-    <div>
-      { RichText.render(homepage.data.homepage.contents.value) }
-    </div>
+    <h1>{homepage.title}</h1>
+    <h4>{homepage.description}</h4>
+    <div>{RichText.render(homepage.contents)}</div>
   </div>
 )
 

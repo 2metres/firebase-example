@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "prismic-dom": "^2.0.6",
     "prismic-javascript": "^1.4.1",
     "prismic-reactjs": "^0.2.4",
     "react": "^16.0.0",
