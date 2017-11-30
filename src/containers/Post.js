@@ -4,11 +4,11 @@ import { RichText } from 'prismic-reactjs'
 
 const Post = ({ post }) => (
   <div>
-    <Link to="/blog/">{'<'} Back</Link>
-    <br />
-    { RichText.render(post.title) }
-    <p>{post.body}</p>
+    <Link to="/posts">{'<'} Back</Link>
+    <h1>{ RichText.asText(post.data.post.title.value) }</h1>
+    { RichText.render(post.data.post.contents.value) }
   </div>
 )
+
 
 export default getRouteProps(Post)
