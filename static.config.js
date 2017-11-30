@@ -74,7 +74,7 @@ export default {
           {
             test: /module\.scss$/,
             use: [
-              { loader: 'style-loader' },
+              'style-loader',
               {
                 loader: 'css-loader',
                 options: {
@@ -82,7 +82,7 @@ export default {
                   localIdentName: '[folder]__[local]___[hash:base64:5]',
                 },
               },
-              { loader: 'sass-loader' }
+              'sass-loader'
             ]
           },
           defaultLoaders.fileLoader,
