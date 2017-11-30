@@ -3,10 +3,10 @@ import { getRouteProps } from 'react-static'
 import { RichText } from 'prismic-reactjs'
 
 const Home = ({ homepage }) => (
-  <div>
+  <div className="container">
     <h1>{homepage.title}</h1>
-    <h4>{homepage.description}</h4>
-    <div>{RichText.render(homepage.contents)}</div>
+    <h3>{homepage.description}</h3>
+    <div>{ RichText.render(homepage.contents) }</div>
   </div>
 )
 

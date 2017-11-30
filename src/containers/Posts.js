@@ -3,7 +3,7 @@ import { getRouteProps, Link } from 'react-static'
 import { RichText } from 'prismic-reactjs'
 
 const Posts = ({ posts }) => (
-  <div>
+  <div className="container">
     <h1>It’s blog time.</h1>
     <ul>
       {

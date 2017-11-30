@@ -1,18 +1,16 @@
 import React from 'react'
-import { Router, Link } from 'react-static'
+import { Router } from 'react-static'
 import Routes from 'react-static-routes'
+
+import Nav from '../components/Nav'
 
 const App = () => (
   <Router>
     <div>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/posts">Posts</Link>
-      </nav>
-      <div className="content">
+      <Nav />
+      <main id="content">
         <Routes />
-      </div>
+      </main>
     </div>
   </Router>
 )

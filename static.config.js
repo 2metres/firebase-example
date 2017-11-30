@@ -1,4 +1,4 @@
-import {} from 'dotenv/config';
+import 'dotenv/config';
 import { RichText } from 'prismic-dom';
 import Prismic from 'prismic-javascript';
 
@@ -60,5 +60,38 @@ export default {
         component: 'src/containers/404',
       },
     ]
-  }
+  },
+  webpack: [
+    (config, { defaultLoaders }) => {
+      config.module.rules = [{
+        oneOf: [
+          defaultLoaders.jsLoader,
+          {
+            test: /\.scss$/,
+            exclude: /module\.scss$/,
+            use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+          },
+          {
+            test: /module\.scss$/,
+            use: [
+              { loader: 'style-loader' },
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: true,
+                  localIdentName: '[folder]__[local]___[hash:base64:5]',
+                },
+              },
+              { loader: 'sass-loader' }
+            ]
+          },
+          defaultLoaders.fileLoader,
+        ]
+      }]
+      return config
+    },
+    // config => {
+    //   console.log(config.module.rules[0]) // Log out the final set of rules
+    // }
+  ]
 }

@@ -1,0 +1,10 @@
+@import '../../styles/variables';
+
+.root {
+
+}
+
+.link {
+  padding: $base-spacing ($base-spacing / 2);
+  display: inline-block;
+}
