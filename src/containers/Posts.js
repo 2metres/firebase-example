@@ -9,7 +9,7 @@ const Posts = ({ posts }) => (
       {
         posts.map(post => (
           <li key={post.id}>
-            <Link to={`/posts/${post.id}/`}>{ RichText.asText(post.data.post.title.value) }</Link>
+            <Link to={`/posts/${post.slugs[0]}/`}>{ RichText.asText(post.data.post.title.value) }</Link>
           </li>
         ))
       }
