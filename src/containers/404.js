@@ -1,9 +1,17 @@
 import React from 'react'
+import {
+  getSiteProps,
+  Head,
+} from 'react-static'
 
-const fourOHFour = () => (
+const fourOHFour = ({ site }) => (
   <div className="container">
-    <h1>404 - Oh no’s! We couldn't find that page :(</h1>
+    <Head>
+      <meta charSet="UTF-8" />
+      <title>Page not found - {site.title}</title>
+    </Head>
+    <h1>404 - Oh noes! We couldn't find that page :(</h1>
   </div>
 )
 
-export default fourOHFour
+export default getSiteProps(fourOHFour)

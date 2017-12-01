@@ -6,7 +6,7 @@ import webpackConfig from './webpack.config'
 
 export default {
   getSiteProps: () => ({
-    title: 'React Static',
+    site: { title: 'React Static' },
   }),
   getRoutes: async () => {
     const postsReq = Prismic.api(process.env.PRISMIC_API_URL)
@@ -50,7 +50,13 @@ export default {
         children: posts.map(post => ({
           path: `/${post.slugs[0]}`,
           component: 'src/containers/Post',
-          getProps: () => ({ post }),
+          getProps: () => ({
+            post: {
+              id: post.id,
+              title: RichText.asText(post.data.post.title.value),
+              contents: post.data.post.contents.value,
+            },
+          }),
         })),
       },
       {

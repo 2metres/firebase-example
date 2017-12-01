@@ -1,9 +1,19 @@
 import React from 'react'
-import { getRouteProps, Link } from 'react-static'
 import { RichText } from 'prismic-reactjs'
+import { compose } from 'recompose'
+import {
+  getRouteProps,
+  getSiteProps,
+  Head,
+  Link,
+} from 'react-static'
 
-const Posts = ({ posts }) => (
+const Posts = ({ posts, site }) => (
   <div className="container">
+    <Head>
+      <meta charSet="UTF-8" />
+      <title>Blog - {site.title}</title>
+    </Head>
     <h1>It’s blog time.</h1>
     <ul>
       {
@@ -17,4 +27,7 @@ const Posts = ({ posts }) => (
   </div>
 )
 
-export default getRouteProps(Posts)
+export default compose(
+  getSiteProps,
+  getRouteProps,
+)(Posts)
