@@ -1,7 +1,7 @@
 import 'dotenv/config'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { RichText } from 'prismic-dom'
 import Prismic from 'prismic-javascript'
+import webpackConfig from './webpack.config'
 
 export default {
   getSiteProps: () => ({
@@ -61,51 +61,5 @@ export default {
       },
     ]
   },
-  webpack: [
-    (config, { stage, defaultLoaders }) => {
-      console.log(`=> Build Stage: ${stage}`)
-      config.module.rules = [{
-        oneOf: [
-          defaultLoaders.jsLoader,
-          {
-            test: /\.scss$/,
-            exclude: /module\.scss$/,
-            use: ExtractTextPlugin.extract({
-              fallback: 'style-loader',
-              use: [
-                { loader: 'css-loader' },
-                { loader: 'sass-loader' },
-              ],
-            }),
-          },
-          {
-            test: /module\.scss$/,
-            use: ExtractTextPlugin.extract({
-              fallback: 'style-loader',
-              use: [
-                {
-                  loader: 'css-loader',
-                  options: {
-                    modules: true,
-                    importLoaders: 1,
-                    localIdentName: '[folder]__[local]___[hash:base64:5]',
-                  },
-                },
-                { loader: 'sass-loader' },
-              ],
-            }),
-          },
-          defaultLoaders.fileLoader,
-        ],
-      }]
-      config.plugins.push(
-        new ExtractTextPlugin({
-          disable: stage === 'dev',
-          filename: 'style.css',
-          allChunks: true,
-        }),
-      )
-      return config
-    },
-  ],
+  webpack: [webpackConfig],
 }
