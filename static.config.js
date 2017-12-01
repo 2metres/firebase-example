@@ -1,6 +1,7 @@
 import 'dotenv/config'
-import { RichText } from 'prismic-dom'
 import Prismic from 'prismic-javascript'
+import { RichText } from 'prismic-dom'
+
 import webpackConfig from './webpack.config'
 
 export default {
@@ -44,15 +45,12 @@ export default {
       {
         path: '/posts',
         component: 'src/containers/Posts',
-        getProps: () => ({
-          posts,
-        }),
+        getProps: () => ({ posts }),
+
         children: posts.map(post => ({
           path: `/${post.slugs[0]}`,
           component: 'src/containers/Post',
-          getProps: () => ({
-            post,
-          }),
+          getProps: () => ({ post }),
         })),
       },
       {
