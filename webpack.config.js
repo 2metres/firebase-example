@@ -1,7 +1,6 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 export default (config, { stage, defaultLoaders }) => {
-  console.log(`=> Build Stage: ${stage}`)
   config.module.rules = [{
     oneOf: [
       defaultLoaders.jsLoader,
