@@ -13,15 +13,13 @@ const Posts = ({ posts, site }) => (
     <Head>
       <title>Blog - {site.title}</title>
     </Head>
-    
+
     <h1>It’s blog time.</h1>
     <ul>
-      {
-        posts.map(post => (
-          <li key={post.id}>
-            <Link to={`/posts/${post.slugs[0]}/`}>{ RichText.asText(post.data.post.title.value) }</Link>
-          </li>
-        ))
+      { posts.map(post => (
+        <li key={post.id}>
+          <Link to={`/posts/${post.slugs[0]}/`}>{ RichText.asText(post.data.post.title.value) }</Link>
+        </li>))
       }
     </ul>
   </div>
