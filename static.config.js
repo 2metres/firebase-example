@@ -1,4 +1,5 @@
 import 'dotenv/config'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { RichText } from 'prismic-dom'
 import Prismic from 'prismic-javascript'
 
@@ -61,36 +62,50 @@ export default {
     ]
   },
   webpack: [
-    (config, { defaultLoaders }) => {
+    (config, { stage, defaultLoaders }) => {
+      console.log(`=> Build Stage: ${stage}`)
       config.module.rules = [{
         oneOf: [
           defaultLoaders.jsLoader,
           {
             test: /\.scss$/,
             exclude: /module\.scss$/,
-            use: ['style-loader', 'css-loader', 'sass-loader'],
+            use: ExtractTextPlugin.extract({
+              fallback: 'style-loader',
+              use: [
+                { loader: 'css-loader' },
+                { loader: 'sass-loader' },
+              ],
+            }),
           },
           {
             test: /module\.scss$/,
-            use: [
-              'style-loader',
-              {
-                loader: 'css-loader',
-                options: {
-                  modules: true,
-                  localIdentName: '[folder]__[local]___[hash:base64:5]',
+            use: ExtractTextPlugin.extract({
+              fallback: 'style-loader',
+              use: [
+                {
+                  loader: 'css-loader',
+                  options: {
+                    modules: true,
+                    importLoaders: 1,
+                    localIdentName: '[folder]__[local]___[hash:base64:5]',
+                  },
                 },
-              },
-              'sass-loader',
-            ],
+                { loader: 'sass-loader' },
+              ],
+            }),
           },
           defaultLoaders.fileLoader,
         ],
       }]
+      config.plugins.push(
+        new ExtractTextPlugin({
+          disable: stage === 'dev',
+          filename: 'style.css',
+          allChunks: true,
+        }),
+      )
       return config
     },
-    // config => {
-    //   console.log(config.module.rules[0]) // Log out the final set of rules
-    // }
-  ]
+  ],
 }

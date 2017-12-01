@@ -6,11 +6,13 @@ import { AppContainer } from 'react-hot-loader'
 
 import App from './containers/App'
 
+export default App
+
 if (typeof document !== 'undefined') {
-  const render = Component => {
+  const render = Comp => {
     ReactDOM.hydrate(
       <AppContainer>
-        <Component />
+        <Comp />
       </AppContainer>,
       document.getElementById('root'),
     )
@@ -19,6 +21,8 @@ if (typeof document !== 'undefined') {
   render(App)
 
   if (module.hot) {
-    module.hot.accept('./containers/App', () => { render(App) })
+    module.hot.accept('./containers/App', () => {
+      render(require('./containers/App').default)
+    })
   }
 }
