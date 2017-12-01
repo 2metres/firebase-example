@@ -10,7 +10,6 @@ import {
 const Home = ({ homepage, site }) => (
   <div className="container">
     <Head>
-      <meta charSet="UTF-8" />
       <title>{homepage.title} - {site.title}</title>
     </Head>
 

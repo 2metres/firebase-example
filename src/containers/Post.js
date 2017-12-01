@@ -11,10 +11,11 @@ import {
 const Post = ({ post, site }) => (
   <div className="container">
     <Head>
-      <meta charSet="UTF-8" />
       <title>{post.title} - {site.title}</title>
     </Head>
+
     <Link to="/posts">{'<'} Back</Link>
+
     <h1>{post.title}</h1>
     { RichText.render(post.contents) }
   </div>

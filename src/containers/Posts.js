@@ -11,9 +11,9 @@ import {
 const Posts = ({ posts, site }) => (
   <div className="container">
     <Head>
-      <meta charSet="UTF-8" />
       <title>Blog - {site.title}</title>
     </Head>
+    
     <h1>It’s blog time.</h1>
     <ul>
       {
