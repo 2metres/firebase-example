@@ -1,23 +1,41 @@
 {
   "name": "firebase-example",
-  "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "author": "2metres",
+  "ava": {
+    "verbose": "true"
+  },
+  "bugs": "https://github.com/2metres/firebase-example/issues",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "prismic-javascript": "^1.4.1",
+    "reshape-standard": "^3.0.0",
+    "spike": "^2.0.0",
+    "spike-css-standards": "^3.0.0",
+    "spike-js-standards": "^2.0.2",
+    "spike-optimize": "^0.1.2",
+    "spike-page-id": "^1.0.0",
+    "spike-records": "^2.2.0"
+  },
   "devDependencies": {
-    "firebase-tools": "^3.15.2"
+    "ajv": "^5.5.1",
+    "ava": "^0.19.1",
+    "rimraf": "^2.6.1",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.2"
   },
+  "homepage": "https://github.com/2metres/firebase-example",
+  "main": "app.js",
+  "private": true,
+  "repository": "https://github.com/2metres/firebase-example",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "firebase deploy"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/2metres/firebase-example.git"
-  },
-  "author": "Andrew Carr <andrew@2metres.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/2metres/firebase-example/issues"
-  },
-  "homepage": "https://github.com/2metres/firebase-example#readme"
+    "lint": "standard | snazzy",
+    "precommit": "npm run lint -s",
+    "pretest": "npm run lint -s",
+    "test": "NODE_ENV=test ava",
+    "start": "spike watch",
+    "build": "spike compile",
+    "prod": "NODE_ENV=production spike compile -e production"
+  }
 }
