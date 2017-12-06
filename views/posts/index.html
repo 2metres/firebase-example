@@ -1,0 +1,11 @@
+<extends src='../layout.html'>
+  <block name='content'>
+    <ul>
+      <each loop='post of posts'>
+        <li>
+          <a href="{{post.slugs[0]}}" prismic-text>{{{ JSON.stringify(post.data.post.title.value) }}}</div>
+        </li>
+      </each>
+    </ul>
+  </block>
+</extends>

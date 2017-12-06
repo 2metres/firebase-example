@@ -9,6 +9,7 @@
   "bugs": "https://github.com/2metres/firebase-example/issues",
   "dependencies": {
     "dotenv": "^4.0.0",
+    "prismic-dom": "^2.0.6",
     "prismic-javascript": "^1.4.1",
     "reshape-standard": "^3.0.0",
     "spike": "^2.0.0",
