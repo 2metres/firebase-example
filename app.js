@@ -5,7 +5,9 @@ const pageId = require('spike-page-id')
 const Records = require('spike-records')
 
 const Prismic = require('prismic-javascript')
-const PrismicDOM = require('prismic-dom')
+
+const prismicHtml = require('prismic-dom').RichText.asHtml
+const prismicText = require('prismic-dom').RichText.asText
 
 require('dotenv').config()
 
@@ -40,9 +42,10 @@ module.exports = {
   reshape: htmlStandards({
     locals: () => locals,
     minify: process.env.SPIKE_ENV === 'production',
+    appendPlugins: [ asHtml, asText ],
     content: {
-      'prismic-html': (data) => PrismicDOM.RichText.asHtml(JSON.parse(data)),
-      'prismic-text': (data) => PrismicDOM.RichText.asText(JSON.parse(data))
+      'prismic-html': (data) => prismicHtml(JSON.parse(data)),
+      'prismic-text': (data) => prismicText(JSON.parse(data))
     }
   }),
   plugins: [
