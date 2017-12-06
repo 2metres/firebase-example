@@ -25,7 +25,6 @@ const postsReq = () => (
     .then(response => response.results)
 )
 
-
 module.exports = {
   devtool: 'source-map',
   ignore: [
@@ -40,6 +39,7 @@ module.exports = {
   ],
   reshape: htmlStandards({
     locals: () => locals,
+    minify: process.env.SPIKE_ENV === 'production',
     content: {
       'prismic-html': (data) => PrismicDOM.RichText.asHtml(JSON.parse(data)),
       'prismic-text': (data) => PrismicDOM.RichText.asText(JSON.parse(data))

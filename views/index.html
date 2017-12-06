@@ -1,7 +1,7 @@
 <extends src='layout.html'>
   <block name='content'>
     <h1 prismic-text>{{{ JSON.stringify(homepage.data.homepage.title.value) }}}</h1>
-    <div prismic-text>{{{ JSON.stringify(homepage.data.homepage.description.value) }}}</div>
+    <h2 prismic-text>{{{ JSON.stringify(homepage.data.homepage.description.value) }}}</h2>
     <div prismic-html>{{{ JSON.stringify(homepage.data.homepage.contents.value) }}}</div>
     <ul>
       <each loop='post of posts'>
