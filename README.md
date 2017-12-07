@@ -1,4 +1,4 @@
-# firebase-example
+# Static Site Generators
 
 - [Liquid + Webpack](https://github.com/2metres/static-site-generators/tree/DIY)
 - [Spike](https://github.com/2metres/static-site-generators/tree/Spike)
