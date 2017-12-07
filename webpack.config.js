@@ -17,11 +17,9 @@ module.exports = {
     rules: [{
       test: /\.html$/,
       use: [
+        'html-loader',
         {
-          loader: "html-loader"
-        },
-        {
-          loader: "liquid-loader",
+          loader: 'liquid-loader',
           options: {
             data: {
               homepage: Prismic.api(process.env.PRISMIC_API_URL)
