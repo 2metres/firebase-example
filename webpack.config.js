@@ -28,26 +28,21 @@ module.exports = {
                 .then(api => api.query('[ at(document.type, "homepage") ]'))
                 .then(response => response.results[0])
                 .then(res => ({
-                    id: res.id,
-                    title: prismicText(res.data.homepage.title.value),
-                    description: prismicText(res.data.homepage.description.value),
-                    contents: prismicHtml(res.data.homepage.contents.value),
-                  })
-                ),
+                  id: res.id,
+                  title: prismicText(res.data.homepage.title.value),
+                  description: prismicText(res.data.homepage.description.value),
+                  contents: prismicHtml(res.data.homepage.contents.value),
+                })),
 
               posts: Prismic.api(process.env.PRISMIC_API_URL)
                 .then(api => api.query('[ at(document.type, "post") ]'))
                 .then(response => response.results)
-                .then(res => {
-                  return res.map(post => (
-                    {
-                      id: post.id,
-                      slug: post.slugs[0],
-                      title: prismicText(post.data.post.title.value),
-                      contents: prismicHtml(post.data.post.contents.value),
-                    }
-                  ))
-                })
+                .then(res => res.map(post => ({
+                  id: post.id,
+                  slug: post.slugs[0],
+                  title: prismicText(post.data.post.title.value),
+                  contents: prismicHtml(post.data.post.contents.value),
+                }))),
             }
           }
       }]
